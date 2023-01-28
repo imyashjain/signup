@@ -21,7 +21,7 @@ function onSignUp(){
         const EmailId = txtEmailId.value;
         const Password = txtPassword.value;
         const ConfirmPassword = txtConfirmPassword.value;
-        
+
         const user = {
             FirstName: FirstName,
             LastName: LastName,
@@ -32,14 +32,32 @@ function onSignUp(){
     }
 }
 
-var returnValue = true;
-
 function validateFirstName(){
     var regexFirstName = /^[a-zA-Z]*$/;
 
-    if(txtFirstName.value.length < 3 & (!txtFirstName.value.length > 20) & txtFirstName.value === "" & regexFirstName.test(txtFirstName.value)){
-        errorFirstName.innerHTML = "Invalid First Name";
-        returnValue = false;
+    if(txtFirstName.value === ""){
+        errorFirstName.innerHTML = "First Name should not be blank";
+        return false;
+    }
+
+    else if(!regexFirstName.test(txtFirstName.value)){
+        errorFirstName.innerHTML = "First Name should not contain any special characters or numbers";
+        return false;
+    }
+
+    else if(txtFirstName.value.length < 3){
+        errorFirstName.innerHTML = "First Name too short(Minimum length should be 3)";
+        return false;
+    }
+
+    else if(txtFirstName.value.length > 20){
+        errorFirstName.innerHTML = "First Name too long(Maximum length should be 20)";
+        return false;
+    }
+
+    else{
+        errorFirstName.innerHTML = "";
+        return true ;
     }
 }
 
