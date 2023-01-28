@@ -1,0 +1,47 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url(signup.jpg);
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+}
+
+p{
+    font-family: 'Roboto';
+    font-size: 24px; 
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    font-family: 'Open Sans';
+}
+
+button{
+    font-size: 22px; 
+    font-weight: 600; 
+    width: 100%;
+    background-color: rgb(173, 9, 9);
+    color: #ffffff;
+    padding: 14px;
+    margin: 8px 0;
+    border: 2px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgb(133, 8, 8);
+    color: #ffffff;
+}
