@@ -21,7 +21,7 @@ function onSignUp(){
         const EmailId = txtEmailId.value;
         const Password = txtPassword.value;
         const ConfirmPassword = txtConfirmPassword.value;
-
+        
         const user = {
             FirstName: FirstName,
             LastName: LastName,
