@@ -67,7 +67,7 @@ function validateFirstName(){
 function validateLastName(){
 
     if(txtLastName.value.trim() === ''){
-        errorLastName.innerHTML = "Last Name should not be blank";
+        errorLastName.innerHTML = 'Last Name should not be blank';
         return false;
     }
 
