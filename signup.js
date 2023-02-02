@@ -23,9 +23,9 @@ function onSignUp(){
         const confirmPassword = txtConfirmPassword.value;
 
         const user = {
-            FirstName: firstName,
-            LastName: lastName,
-            EmailId: emailId
+            firstName: firstName,
+            lastName: lastName,
+            emailId: emailId
         }
         users.push(user);
         console.log(users);
@@ -33,7 +33,7 @@ function onSignUp(){
 }
 
 var regexName = /^[a-zA-Z]*$/;
-var regexEmailId = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+var regexEmailId = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+){2,4}$/;
 var regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])(?=^\S*$)[a-zA-Z\d!@#\$%\^&\*]{8,16}$/;
 
 function validateFirstName(){

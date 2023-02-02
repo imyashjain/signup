@@ -9,7 +9,7 @@ if (userData) {
 }
 
 if (users && users.length === 0) {
-    window.location.href = './';
+    window.location.href = './login.html';
 }
 
 function onLogIn() {
