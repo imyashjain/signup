@@ -1,8 +1,8 @@
-const txtFirstName = document.getElementById('FirstName');
-const txtLastName = document.getElementById('LastName');
-const txtEmailId = document.getElementById('EmailId');
-const txtPassword = document.getElementById('Password');
-const txtConfirmPassword = document.getElementById('ConfirmPassword');
+const txtFirstName = document.getElementById('firstName');
+const txtLastName = document.getElementById('lastName');
+const txtEmailId = document.getElementById('emailId');
+const txtPassword = document.getElementById('password');
+const txtConfirmPassword = document.getElementById('confirmPassword');
 const btnSignUp = document.getElementById('btnSignUp');
 
 const errorFirstName = document.getElementById("errorFirstName");
@@ -16,16 +16,16 @@ const users = [];
 function onSignUp(){
 
     if(validateFirstName() & validateLastName() & validateEmailId() & validatePassword() & validateConfirmPassword()){
-        const FirstName = txtFirstName.value;
-        const LastName = txtLastName.value;
-        const EmailId = txtEmailId.value;
-        const Password = txtPassword.value;
-        const ConfirmPassword = txtConfirmPassword.value;
+        const firstName = txtFirstName.value;
+        const lastName = txtLastName.value;
+        const emailId = txtEmailId.value;
+        const password = txtPassword.value;
+        const confirmPassword = txtConfirmPassword.value;
 
         const user = {
-            FirstName: FirstName,
-            LastName: LastName,
-            EmailId: EmailId
+            FirstName: firstName,
+            LastName: lastName,
+            EmailId: emailId
         }
         users.push(user);
         console.log(users);
@@ -39,22 +39,22 @@ var regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])(?=^\S*$)
 function validateFirstName(){
     
     if(txtFirstName.value.trim() === ''){
-        errorFirstName.innerHTML = 'First Name should not be blank';
+        errorFirstName.innerHTML = 'First Name cannot be blank';
         return false;
     }
 
     else if(!regexName.test(txtFirstName.value)){
-        errorFirstName.innerHTML = 'First Name should not contain any special characters or numbers';
+        errorFirstName.innerHTML = 'First Name cannot contain any special characters or numbers';
         return false;
     }
 
     else if(txtFirstName.value.length < 3){
-        errorFirstName.innerHTML = 'First Name too short (Minimum character length should be 3)';
+        errorFirstName.innerHTML = 'First Name is too short (Minimum character length should be 3)';
         return false;
     }
 
     else if(txtFirstName.value.length > 20){
-        errorFirstName.innerHTML = 'First Name too long (Maximum character length should be 20)';
+        errorFirstName.innerHTML = 'First Name is too long (Maximum character length should be 20)';
         return false;
     }
 
@@ -67,22 +67,22 @@ function validateFirstName(){
 function validateLastName(){
 
     if(txtLastName.value.trim() === ''){
-        errorLastName.innerHTML = 'Last Name should not be blank';
+        errorLastName.innerHTML = 'Last Name cannot be blank';
         return false;
     }
 
     else if(!regexName.test(txtLastName.value)){
-        errorLastName.innerHTML = 'Last Name should not contain any special characters or numbers';
+        errorLastName.innerHTML = 'Last Name cannot contain any special characters or numbers';
         return false;
     }
 
     else if(txtLastName.value.length < 3){
-        errorFirstName.innerHTML = 'Last Name too short (Minimum character length should be 3)';
+        errorFirstName.innerHTML = 'Last Name is too short (Minimum character length should be 3)';
         return false;
     }
 
     else if(txtLastName.value.length > 20){
-        errorFirstName.innerHTML = 'Last Name too long (Maximum character length should be 20)';
+        errorFirstName.innerHTML = 'Last Name is too long (Maximum character length should be 20)';
         return false;
     }
 
@@ -95,7 +95,7 @@ function validateLastName(){
 function validateEmailId(){
 
     if(txtEmailId.value.trim() === ''){
-        errorEmailId.innerHTML = 'Email Id should not be blank';
+        errorEmailId.innerHTML = 'Email Id cannot be blank';
         return false;
     }
 
@@ -113,7 +113,7 @@ function validateEmailId(){
 function validatePassword(){
     
     if(txtPassword.value.trim() === ''){
-        errorPassword.innerHTML = 'Password should not be blank';
+        errorPassword.innerHTML = 'Password cannot be blank';
         return false;
     }
 
@@ -131,7 +131,7 @@ function validatePassword(){
 function validateConfirmPassword(){
 
     if(txtConfirmPassword.value.trim() === ''){
-        errorConfirmPassword.innerHTML = 'Confirm Password should not be blank';
+        errorConfirmPassword.innerHTML = 'Confirm Password cannot be blank';
         return false;
     }
     

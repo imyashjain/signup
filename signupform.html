@@ -8,27 +8,27 @@
     <title>Sign Up Form</title>
 </head>
 <body>
-    <form action="./login.html" id="SignUpForm" action="" name="signupform" onsubmit="return onSignUp()">
+    <form action="./login.html" id="SignUpForm" name="signupform" onsubmit="onSignUp()">
 
         <h1>Sign Up</h1>
         
         <div class="container">
-            <input type="text" id="FirstName" name="firstname" placeholder="First Name" onsubmit="return validateFirstName()">
+            <input type="text" id="firstName" name="firstname" placeholder="First Name" required>
             <span id="errorFirstName"></span>
         </div>
 
         <div class="container">
-            <input type="text" id="LastName" name="lastname" placeholder="Last Name" onsubmit="return validateLatName()">
+            <input type="text" id="lastName" name="lastname" placeholder="Last Name" required>
             <span id="errorLastName"></span>
         </div>
 
         <div class="container">
-            <input type="email" id="EmailId" name="email" placeholder="Email Id" onsubmit="return validateEmailId()">
+            <input type="email" id="emailId" name="emailid" placeholder="Email Id" required>
             <span id="errorEmailId"></span>
         </div>
 
         <div class="container">
-            <input type="password" id="Password" name="password" placeholder="Password" onsubmit="return validatePassword()">
+            <input type="password" id="password" name="password" placeholder="Password" required>
             <span id="errorPassword"></span>
             <ul>
                 <li>Password should be at least 8 characters long.</li>
@@ -37,12 +37,12 @@
         </div>
 
         <div class="container">
-            <input type="password" id="ConfirmPassword" name="confirmpassword" placeholder="Confirm Password" onsubmit="return validateConfirmPassword()">
+            <input type="password" id="confirmPassword" name="confirmpassword" placeholder="Confirm Password" required>
             <span id="errorConfirmPassword"></span>
         </div>
 
         <div class="button">
-            <input type="button" id="btnSignUp" value="Register" onsubmit="return onSignUp()">
+            <input type="button" id="btnSignUp" value="Register" onsubmit="onSignUp()">
         </div>
 
         <a href="./login.html">Login</a>
