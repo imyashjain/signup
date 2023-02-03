@@ -1,3 +1,5 @@
+import { Validation } from './validation';
+
 const userData = sessionStorage.getItem('userData');
 const txtEmailId = document.getElementById('emailId');
 const txtPassword = document.getElementById('password');
@@ -15,6 +17,12 @@ if (users && users.length === 0) {
 function onSignIn() {
     const emailId = txtEmailId.value;
     const password = txtPassword.value;
+
+    if(Validation.isValidEmail(emailId)) {
+// 
+    };
+
+
 
     const filteredUser = users.filter(user => user.emailId === emailId
         && user.password === password);
