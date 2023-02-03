@@ -39,8 +39,8 @@ function onSignUp(){
     }
 }
 
-var regexName = /^[a-zA-Z]{3,20}$/;
-var regexEmailId = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+){2,4}$/;
+var regexName = /^[a-zA-Z]*$/;
+var regexEmailId = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,4})$/;
 var regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])(?=^\S*$)[a-zA-Z\d!@#\$%\^&\*]{8,16}$/;
 
 function validateFirstName(){
@@ -51,19 +51,19 @@ function validateFirstName(){
     }
 
     else if(!regexName.test(txtFirstName.value)){
-        errorFirstName.innerHTML = 'First Name cannot contain any special characters or numbers, Length of First Name cannot be less than 3 and more than 20.';
+        errorFirstName.innerHTML = 'First Name cannot contain any special characters or numbers';
         return false;
     }
 
-//    else if(txtFirstName.value.length < 3){
-//        errorFirstName.innerHTML = 'First Name is too short (Minimum character length should be 3)';
-//        return false;
-//    }
-//
-//    else if(txtFirstName.value.length > 20){
-//        errorFirstName.innerHTML = 'First Name is too long (Maximum character length should be 20)';
-//        return false;
-//    }
+    else if(txtFirstName.value.length < 3){
+        errorFirstName.innerHTML = 'First Name is too short (Minimum character length should be 3)';
+        return false;
+    }
+
+    else if(txtFirstName.value.length > 20){
+        errorFirstName.innerHTML = 'First Name is too long (Maximum character length should be 20)';
+        return false;
+    }
 
     else{
         errorFirstName.innerHTML = '';
@@ -79,19 +79,19 @@ function validateLastName(){
     }
 
     else if(!regexName.test(txtLastName.value)){
-        errorLastName.innerHTML = 'Last Name cannot contain any special characters or numbers, Length of Last Name cannot be less than 3 and more than 20.';
+        errorLastName.innerHTML = 'Last Name cannot contain any special characters or numbers';
         return false;
     }
 
-//    else if(txtLastName.value.length < 3){
-//        errorFirstName.innerHTML = 'Last Name is too short (Minimum character length should be 3)';
-//        return false;
-//    }
-//
-//    else if(txtLastName.value.length > 20){
-//        errorFirstName.innerHTML = 'Last Name is too long (Maximum character length should be 20)';
-//        return false;
-//    }
+    else if(txtLastName.value.length < 3){
+        errorFirstName.innerHTML = 'Last Name is too short (Minimum character length should be 3)';
+        return false;
+    }
+
+    else if(txtLastName.value.length > 20){
+        errorFirstName.innerHTML = 'Last Name is too long (Maximum character length should be 20)';
+        return false;
+    }
 
     else{
         errorLastName.innerHTML = '';
@@ -112,7 +112,7 @@ function validateEmailId(){
     }
 
     else{
-        errorLastName.innerHTML = '';
+        errorEmailId.innerHTML = '';
         return true ;
     }
 }
@@ -130,7 +130,7 @@ function validatePassword(){
     }
 
     else{
-        errorLastName.innerHTML = '';
+        errorPassword.innerHTML = '';
         return true ;
     }
 }
@@ -148,7 +148,7 @@ function validateConfirmPassword(){
     }
 
     else{
-        errorLastName.innerHTML = '';
+        errorConfirmPassword.innerHTML = '';
         return true ;
     }
 }
