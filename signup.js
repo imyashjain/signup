@@ -4,6 +4,7 @@ const txtEmailId = document.getElementById('emailId');
 const txtPassword = document.getElementById('password');
 const txtConfirmPassword = document.getElementById('confirmPassword');
 const btnSignUp = document.getElementById('btnSignUp');
+const body = document.getElementById('main');
 
 const errorFirstName = document.getElementById("errorFirstName");
 const errorLastName = document.getElementById("errorLastName");
@@ -12,6 +13,12 @@ const errorPassword = document.getElementById("errorPassword");
 const errorConfirmPassword = document.getElementById("errorConfirmPassword");
 
 const users = [];
+
+function onSubmit (event) {
+    if(event.keyCode === 13){
+        onSignUp();
+    }
+}
 
 function onSignUp(){
 
@@ -147,3 +154,4 @@ function validateConfirmPassword(){
 }
 
 btnSignUp.addEventListener('click', onSignUp);
+body.addEventListener('keypress', onSubmit);
