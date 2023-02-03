@@ -12,7 +12,7 @@ if (users && users.length === 0) {
     window.location.href = './login.html';
 }
 
-function onLogIn() {
+function onSignIn() {
     const emailId = txtEmailId.value;
     const password = txtPassword.value;
 
