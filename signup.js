@@ -14,7 +14,7 @@ const errorConfirmPassword = document.getElementById("errorConfirmPassword");
 
 const users = [];
 
-function onSubmit(){
+function onSubmit(event){
     if(event.keyCode === 13){
         onSignUp();
     }
