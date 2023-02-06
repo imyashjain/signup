@@ -14,7 +14,7 @@ const errorConfirmPassword = document.getElementById("errorConfirmPassword");
 
 const users = [];
 
-function onSubmit (event) {
+function onSubmit(){
     if(event.keyCode === 13){
         onSignUp();
     }
@@ -34,17 +34,43 @@ function onSignUp(){
             lastName: lastName,
             emailId: emailId
         }
-        users.push(user);
-        console.log(users);
+        if (checkDuplicate(emailId) === true){
+            const userId = getUserId();
+            user.id = userId;
+            users.push(user);
+            sessionStorage.setItem('userData', JSON.stringify(users));
+        }
     }
 }
 
-var regexName = /^[a-zA-Z]*$/;
-var regexEmailId = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,4})$/;
-var regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])(?=^\S*$)[a-zA-Z\d!@#\$%\^&\*]{8,16}$/;
+function checkDuplicate(emailId){
+    const data = users.filter(user => user.emailId === emailId);
+    if (data && data.length > 0) {
+        alert('User Already Exists!');
+        return false;
+    }
+    return true;
+}
+
+function getUserId(){
+    const lastUserId = sessionStorage.getItem('lastUserId');
+
+    let userId;
+    if (lastUserId === null) {
+        userId = 1;
+        sessionStorage.setItem('lastUserId', userId);
+        return userId;
+    }
+    userId = parseInt(lastUserId) + 1;
+    sessionStorage.setItem('lastUserId', userId);
+    return userId;
+}
+
+const regexName = /^[a-zA-Z]*$/;
+const regexEmailId = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,4})$/;
+const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])(?=^\S*$)[a-zA-Z\d!@#\$%\^&\*]{8,16}$/;
 
 function validateFirstName(){
-    
     if(txtFirstName.value.trim() === ''){
         errorFirstName.innerHTML = 'First Name cannot be blank';
         return false;
@@ -72,7 +98,6 @@ function validateFirstName(){
 }
 
 function validateLastName(){
-
     if(txtLastName.value.trim() === ''){
         errorLastName.innerHTML = 'Last Name cannot be blank';
         return false;
@@ -100,7 +125,6 @@ function validateLastName(){
 }
 
 function validateEmailId(){
-
     if(txtEmailId.value.trim() === ''){
         errorEmailId.innerHTML = 'Email Id cannot be blank';
         return false;
@@ -118,7 +142,6 @@ function validateEmailId(){
 }
 
 function validatePassword(){
-    
     if(txtPassword.value.trim() === ''){
         errorPassword.innerHTML = 'Password cannot be blank';
         return false;
@@ -136,7 +159,6 @@ function validatePassword(){
 }
 
 function validateConfirmPassword(){
-
     if(txtConfirmPassword.value.trim() === ''){
         errorConfirmPassword.innerHTML = 'Confirm Password cannot be blank';
         return false;

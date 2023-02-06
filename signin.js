@@ -1,8 +1,11 @@
-import { Validation } from './validation';
+import {Validation} from './validation';
 
 const userData = sessionStorage.getItem('userData');
 const txtEmailId = document.getElementById('emailId');
 const txtPassword = document.getElementById('password');
+
+const errorEmailId = document.getElementById("errorEmailId");
+const errorPassword = document.getElementById("errorPassword");
 
 let users = [];
 
@@ -11,17 +14,32 @@ if (userData) {
 }
 
 if (users && users.length === 0) {
-    window.location.href = './login.html';
+    window.location.href = './signin.html';
 }
 
 function onSignIn() {
     const emailId = txtEmailId.value;
     const password = txtPassword.value;
 
-    if(Validation.isValidEmail(emailId)) {
-// 
-    };
+    if(Validation.isValidEmail()){
+        errorEmailId.innerHTML = '';
+        return true;
+    }
+    
+    else{
+        errorEmailId.innerHTML = 'Invalid Email';
+        return false;
+    }
 
+    if(Validation.isValidPassword()){
+        errorPassword.innerHTML = '';
+        return true;
+    }
+    
+    else{
+        errorPassword.innerHTML = 'Invalid Password';
+        return false;
+    }
 
 
     const filteredUser = users.filter(user => user.emailId === emailId
