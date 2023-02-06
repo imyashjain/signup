@@ -12,17 +12,26 @@ const errorEmailId = document.getElementById("errorEmailId");
 const errorPassword = document.getElementById("errorPassword");
 const errorConfirmPassword = document.getElementById("errorConfirmPassword");
 
-const users = [];
+const userData = sessionStorage.getItem('userData');
+// let users = [];
+// if (userData === null) {
+//     users = [];
+// }
+// else {
+//     users = JSON.parse(userData);
+// }
 
-function onSubmit(event){
-    if(event.keyCode === 13){
+const users = userData === null ? [] : JSON.parse(userData);
+
+function onSubmit(event) {
+    if (event.keyCode === 13) {
         onSignUp();
     }
 }
 
-function onSignUp(){
+function onSignUp() {
 
-    if(validateFirstName() & validateLastName() & validateEmailId() & validatePassword() & validateConfirmPassword()){
+    if (validateFirstName() & validateLastName() & validateEmailId() & validatePassword() & validateConfirmPassword()) {
         const firstName = txtFirstName.value;
         const lastName = txtLastName.value;
         const emailId = txtEmailId.value;
@@ -32,18 +41,20 @@ function onSignUp(){
         const user = {
             firstName: firstName,
             lastName: lastName,
-            emailId: emailId
+            emailId: emailId,
+            password,
         }
-        if (checkDuplicate(emailId) === true){
+        if (checkDuplicate(emailId) === true) {
             const userId = getUserId();
             user.id = userId;
             users.push(user);
             sessionStorage.setItem('userData', JSON.stringify(users));
+            window.location.href = './signin.html'
         }
     }
 }
 
-function checkDuplicate(emailId){
+function checkDuplicate(emailId) {
     const data = users.filter(user => user.emailId === emailId);
     if (data && data.length > 0) {
         alert('User Already Exists!');
@@ -52,7 +63,7 @@ function checkDuplicate(emailId){
     return true;
 }
 
-function getUserId(){
+function getUserId() {
     const lastUserId = sessionStorage.getItem('lastUserId');
 
     let userId;
@@ -70,108 +81,108 @@ const regexName = /^[a-zA-Z]*$/;
 const regexEmailId = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,4})$/;
 const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#\$%\^&\*])(?=^\S*$)[a-zA-Z\d!@#\$%\^&\*]{8,16}$/;
 
-function validateFirstName(){
-    if(txtFirstName.value.trim() === ''){
+function validateFirstName() {
+    if (txtFirstName.value.trim() === '') {
         errorFirstName.innerHTML = 'First Name cannot be blank';
         return false;
     }
 
-    else if(!regexName.test(txtFirstName.value)){
+    else if (!regexName.test(txtFirstName.value)) {
         errorFirstName.innerHTML = 'First Name cannot contain any special characters or numbers';
         return false;
     }
 
-    else if(txtFirstName.value.length < 3){
+    else if (txtFirstName.value.length < 3) {
         errorFirstName.innerHTML = 'First Name is too short (Minimum character length should be 3)';
         return false;
     }
 
-    else if(txtFirstName.value.length > 20){
+    else if (txtFirstName.value.length > 20) {
         errorFirstName.innerHTML = 'First Name is too long (Maximum character length should be 20)';
         return false;
     }
 
-    else{
+    else {
         errorFirstName.innerHTML = '';
-        return true ;
+        return true;
     }
 }
 
-function validateLastName(){
-    if(txtLastName.value.trim() === ''){
+function validateLastName() {
+    if (txtLastName.value.trim() === '') {
         errorLastName.innerHTML = 'Last Name cannot be blank';
         return false;
     }
 
-    else if(!regexName.test(txtLastName.value)){
+    else if (!regexName.test(txtLastName.value)) {
         errorLastName.innerHTML = 'Last Name cannot contain any special characters or numbers';
         return false;
     }
 
-    else if(txtLastName.value.length < 3){
+    else if (txtLastName.value.length < 3) {
         errorFirstName.innerHTML = 'Last Name is too short (Minimum character length should be 3)';
         return false;
     }
 
-    else if(txtLastName.value.length > 20){
+    else if (txtLastName.value.length > 20) {
         errorFirstName.innerHTML = 'Last Name is too long (Maximum character length should be 20)';
         return false;
     }
 
-    else{
+    else {
         errorLastName.innerHTML = '';
-        return true ;
+        return true;
     }
 }
 
-function validateEmailId(){
-    if(txtEmailId.value.trim() === ''){
+function validateEmailId() {
+    if (txtEmailId.value.trim() === '') {
         errorEmailId.innerHTML = 'Email Id cannot be blank';
         return false;
     }
 
-    else if(!regexEmailId.test(txtEmailId.value)){
+    else if (!regexEmailId.test(txtEmailId.value)) {
         errorEmailId.innerHTML = 'Invalid Email Id';
         return false;
     }
 
-    else{
+    else {
         errorEmailId.innerHTML = '';
-        return true ;
+        return true;
     }
 }
 
-function validatePassword(){
-    if(txtPassword.value.trim() === ''){
+function validatePassword() {
+    if (txtPassword.value.trim() === '') {
         errorPassword.innerHTML = 'Password cannot be blank';
         return false;
     }
 
-    else if(!regexPassword.test(txtPassword.value)){
+    else if (!regexPassword.test(txtPassword.value)) {
         errorPassword.innerHTML = 'Invalid Password';
         return false;
     }
 
-    else{
+    else {
         errorPassword.innerHTML = '';
-        return true ;
+        return true;
     }
 }
 
-function validateConfirmPassword(){
-    if(txtConfirmPassword.value.trim() === ''){
+function validateConfirmPassword() {
+    if (txtConfirmPassword.value.trim() === '') {
         errorConfirmPassword.innerHTML = 'Confirm Password cannot be blank';
         return false;
     }
-    
-    else if(txtConfirmPassword.value.trim() !== txtPassword.value.trim()){
+
+    else if (txtConfirmPassword.value.trim() !== txtPassword.value.trim()) {
         errorConfirmPassword.innerHTML = 'Password and Confirm Password should match';
         return false;
     }
 
-    else{
+    else {
         errorConfirmPassword.innerHTML = '';
-        return true ;
+        return true;
     }
 }
 

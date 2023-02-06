@@ -21,14 +21,14 @@ if (users && users.length === 0) {
 function onSignIn() {
     const emailId = txtEmailId.value;
     const password = txtPassword.value;
-    returnValue = false;
+    let returnValue = false;
 
-    if(!Validation.isValidEmail()){
+    if(!Validation.isValidEmail(emailId)){
         errorEmailId.innerHTML = 'Invalid Email';
         returnValue = true;
     }
 
-    if(!Validation.isValidPassword()){
+    if(!Validation.isValidPassword(password)){
         errorPassword.innerHTML = 'Invalid Password';
         returnValue = true;
     }
@@ -45,6 +45,7 @@ function onSignIn() {
 
     if (filteredUser && filteredUser.length > 0) {
         alert('Login Successfully');
+        window.location.href = `./dashboard.html?id=${filteredUser[0].id}`;
     }
 
     else {
