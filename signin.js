@@ -21,17 +21,24 @@ if (users && users.length === 0) {
 function onSignIn() {
     const emailId = txtEmailId.value;
     const password = txtPassword.value;
+    returnValue = false;
 
     if(!Validation.isValidEmail()){
         errorEmailId.innerHTML = 'Invalid Email';
-        return false;
+        returnValue = true;
     }
 
-    else if(!Validation.isValidPassword()){
+    if(!Validation.isValidPassword()){
         errorPassword.innerHTML = 'Invalid Password';
+        returnValue = true;
+    }
+
+    if(returnValue === true){
         return false;
     }
 
+    errorEmailId.innerHTML = '';
+    errorPassword.innerHTML = '';
 
     const filteredUser = users.filter(user => user.emailId === emailId
         && user.password === password);
