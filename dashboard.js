@@ -9,11 +9,12 @@ if (userId === null) {
 }
 
 const userData = sessionStorage.getItem('userData');
+
 const users = userData === null ? [] : JSON.parse(userData);
 
 const filteredUser = users.filter(user => user.id === userId);
 
-if (filteredUser && filteredUser.length > 0) {
+if(filteredUser && filteredUser.length > 0){
     alert('invalid page');
     window.location.href = './signin.html';
 }
