@@ -13,6 +13,7 @@ const errorPassword = document.getElementById("errorPassword");
 const errorConfirmPassword = document.getElementById("errorConfirmPassword");
 
 const userData = sessionStorage.getItem('userData');
+
 // let users = [];
 // if (userData === null) {
 //     users = [];

@@ -8,7 +8,7 @@ if (userId === null) {
     window.location.href = './signin.html';
 }
 
-const userData = sessionStorage.get('userData');
+const userData = sessionStorage.getItem('userData');
 const users = userData === null ? [] : JSON.parse(userData);
 
 const filteredUser = users.filter(user => user.id === userId);

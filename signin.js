@@ -1,21 +1,31 @@
 import {Validation} from './validation.js';
 
-const userData = sessionStorage.getItem('userData');
 const txtEmailId = document.getElementById('emailId');
 const txtPassword = document.getElementById('password');
 const btnSignIn = document.getElementById('btnSignIn');
+const body = document.getElementById('main');
 
 const errorEmailId = document.getElementById("errorEmailId");
 const errorPassword = document.getElementById("errorPassword");
 
-let users = [];
+const userData = sessionStorage.getItem('userData');
 
-if (userData) {
-    users = JSON.parse(userData);
-}
+//let users = [];
+//
+//if (userData) {
+//    users = JSON.parse(userData);
+//}
+
+const users = userData === null ? [] : JSON.parse(userData);
 
 if (users && users.length === 0) {
     window.location.href = './signupform.html';
+}
+
+function onSubmit(event) {
+    if (event.keyCode === 13) {
+        onSignUp();
+    }
 }
 
 function onSignIn() {
@@ -54,3 +64,4 @@ function onSignIn() {
 }
 
 btnSignIn.addEventListener('click', onSignIn);
+body.addEventListener('keypress', onSubmit);
