@@ -1,4 +1,4 @@
-import {Validation} from './validation.js';
+import { Validation } from './validation.js';
 
 const userData = sessionStorage.getItem('userData');
 const txtEmailId = document.getElementById('emailId');
@@ -23,17 +23,17 @@ function onSignIn() {
     const password = txtPassword.value;
     let returnValue = false;
 
-    if(!Validation.isValidEmail(emailId)){
+    if (!Validation.isValidEmail(emailId)) {
         errorEmailId.innerHTML = 'Invalid Email';
         returnValue = true;
     }
 
-    if(!Validation.isValidPassword(password)){
+    if (!Validation.isValidPassword(password)) {
         errorPassword.innerHTML = 'Invalid Password';
         returnValue = true;
     }
 
-    if(returnValue === true){
+    if (returnValue === true) {
         return false;
     }
 

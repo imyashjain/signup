@@ -1,20 +1,26 @@
+const username = document.getElementById('username');
+const email = document.getElementById('email');
+
 const searchString = window.location.search; // ?id=<id>
 
 const queryParams = new URLSearchParams(searchString);
 
 const userId = queryParams.get('id');
 
-if (userId === null) {
+if (!userId) {
     window.location.href = './signin.html';
 }
 
-const userData = sessionStorage.get('userData');
+const userData = sessionStorage.getItem('userData');
 const users = userData === null ? [] : JSON.parse(userData);
 
-const filteredUser = users.filter(user => user.id === userId);
+const exitingUser = users.find(user => user.id === parseInt(userId));
 
-if (filteredUser && filteredUser.length > 0) {
+// null undefined 0 false
+if (!exitingUser) {
     alert('invalid page');
     window.location.href = './signin.html';
 }
 
+username.innerHTML = exitingUser.firstName + ' ' + exitingUser.lastName;
+email.innerHTML = exitingUser.emailId;

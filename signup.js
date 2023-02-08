@@ -5,6 +5,7 @@ const txtPassword = document.getElementById('password');
 const txtConfirmPassword = document.getElementById('confirmPassword');
 const btnSignUp = document.getElementById('btnSignUp');
 const body = document.getElementById('main');
+const flpProfilePic = document.getElementById('flpProfilePic');
 
 const errorFirstName = document.getElementById("errorFirstName");
 const errorLastName = document.getElementById("errorLastName");
@@ -27,6 +28,15 @@ function onSubmit(event) {
     if (event.keyCode === 13) {
         onSignUp();
     }
+}
+
+function onUploadProfilePic(event) {
+    console.log(event);
+
+    const profileImg = document.getElementById('profileImg');
+    const img = document.createElement('img');
+    img.src = './';
+    profileImg.append(img);
 }
 
 function onSignUp() {
@@ -188,3 +198,4 @@ function validateConfirmPassword() {
 
 btnSignUp.addEventListener('click', onSignUp);
 body.addEventListener('keypress', onSubmit);
+flpProfilePic.addEventListener('change', onUploadProfilePic)
