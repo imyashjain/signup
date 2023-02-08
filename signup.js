@@ -14,6 +14,7 @@ const errorPassword = document.getElementById("errorPassword");
 const errorConfirmPassword = document.getElementById("errorConfirmPassword");
 
 const userData = sessionStorage.getItem('userData');
+
 // let users = [];
 // if (userData === null) {
 //     users = [];
@@ -24,8 +25,8 @@ const userData = sessionStorage.getItem('userData');
 
 const users = userData === null ? [] : JSON.parse(userData);
 
-function onSubmit(event) {
-    if (event.keyCode === 13) {
+function onSubmit(event){
+    if(event.keyCode === 13){
         onSignUp();
     }
 }
@@ -54,7 +55,7 @@ function onSignUp() {
             emailId: emailId,
             password,
         }
-        if (checkDuplicate(emailId) === true) {
+        if(checkDuplicate(emailId) === true){
             const userId = getUserId();
             user.id = userId;
             users.push(user);
@@ -64,20 +65,20 @@ function onSignUp() {
     }
 }
 
-function checkDuplicate(emailId) {
+function checkDuplicate(emailId){
     const data = users.filter(user => user.emailId === emailId);
-    if (data && data.length > 0) {
+    if(data && data.length > 0){
         alert('User Already Exists!');
         return false;
     }
     return true;
 }
 
-function getUserId() {
+function getUserId(){
     const lastUserId = sessionStorage.getItem('lastUserId');
 
     let userId;
-    if (lastUserId === null) {
+    if(lastUserId === null){
         userId = 1;
         sessionStorage.setItem('lastUserId', userId);
         return userId;
