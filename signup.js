@@ -47,7 +47,6 @@ function onSignUp() {
         const lastName = txtLastName.value;
         const emailId = txtEmailId.value;
         const password = txtPassword.value;
-        const confirmPassword = txtConfirmPassword.value;
 
         const user = {
             firstName: firstName,
@@ -55,6 +54,7 @@ function onSignUp() {
             emailId: emailId,
             password,
         }
+        
         if(checkDuplicate(emailId) === true){
             const userId = getUserId();
             user.id = userId;
